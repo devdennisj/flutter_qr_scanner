@@ -1,5 +1,6 @@
 @import AVFoundation;
 
+#import <stdlib.h>
 #import "FlutterQrScannerPlugin.h"
 #import <libkern/OSAtomic.h>
 #import "GoogleMobileVision/GoogleMobileVision.h"
@@ -108,6 +109,8 @@
 - (void)captureOutput:(AVCaptureOutput *)output
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
+
+      if(arc4random_uniform(5)==1){
     // runs on main queue
 
     // create a new buffer in the form of a CGImage containing the image.
@@ -152,6 +155,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         dispatch_async(_mainQueue, ^{
             self->_onCodeAvailable(value);
         });
+    }
     }
 }
 
