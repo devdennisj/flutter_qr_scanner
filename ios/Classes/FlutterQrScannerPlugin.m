@@ -110,7 +110,7 @@
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
 
-      if(arc4random_uniform(5)==1){
+      if(arc4random_uniform(5)==6){
     // runs on main queue
 
     // create a new buffer in the form of a CGImage containing the image.
