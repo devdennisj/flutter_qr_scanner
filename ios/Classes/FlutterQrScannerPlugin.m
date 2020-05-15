@@ -163,9 +163,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                 image = nil;
                 CGImageRelease(cgImageRef);
     }
-
-    }
 }
+
 
 - (void)heartBeat {
     // TODO: implement
