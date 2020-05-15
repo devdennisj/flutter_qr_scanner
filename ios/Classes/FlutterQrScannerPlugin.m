@@ -109,7 +109,7 @@
 - (void)captureOutput:(AVCaptureOutput *)output
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
-
+    static int counter = 0;
 
     // runs on main queue
 
@@ -144,7 +144,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     };
     
     UIImage *image = [UIImage imageWithCGImage:cgImageRef];
-    if (false){
+    if (counter++ % 10 == 0){
 
     NSArray<GMVBarcodeFeature *> *barcodes = [_barcodeDetector featuresInImage:image options:options];
     image = nil;
