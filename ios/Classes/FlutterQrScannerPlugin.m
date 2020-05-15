@@ -110,7 +110,7 @@
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
 
-      if(arc4random_uniform(5)==6){
+
     // runs on main queue
 
     // create a new buffer in the form of a CGImage containing the image.
@@ -144,6 +144,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     };
     
     UIImage *image = [UIImage imageWithCGImage:cgImageRef];
+    if (false){
+
     NSArray<GMVBarcodeFeature *> *barcodes = [_barcodeDetector featuresInImage:image options:options];
     image = nil;
     CGImageRelease(cgImageRef);
@@ -156,6 +158,12 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             self->_onCodeAvailable(value);
         });
     }
+    }
+    else{
+                image = nil;
+                CGImageRelease(cgImageRef);
+    }
+
     }
 }
 
